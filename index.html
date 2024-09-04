@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html class="h-full" lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontend Mentor | Mortgage repayment calculator</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+  <link rel="stylesheet" href="src/output.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap"
+    rel="stylesheet" />
+</head>
+
+<body class="font-Jakarta bg-Slate-500 h-full md:flex md:justify-center md:items-center">
+  <div class="md:flex md:justify-center bg-white md:w-[750px] md:rounded-2xl md:shadow-2xl">
+    <div class="md:p-3 md:w-1/2">
+      <div class="md:flex md:justify-between md:items-center md:mt-3 md:ps-3">
+        <h1 class="text-black font-bold text-2xl ps-3 pt-3 md:p-0 md:text-xl">
+          Mortgage Calculator
+        </h1>
+        <a href="#" id="clear" class="text-blue-300 underline ps-3 md:p-0">Clear All</a>
+      </div>
+      <!-- form under -->
+      <form id="form" action="" class="mt-5 md:mt-2 flex flex-col gap-1 p-3 bg-white">
+        <label for="amount" class="font-semibold text-gray-600 text-xs">Mortgage Amount</label>
+        <div class="relative border-[1px] overflow-hidden border-Slate-100 rounded-[4px] mt-1">
+          <input id="amount" type="number" min="1" class="font-bold text-black w-full h-full p-1 ps-10 border-[1px] focus:outline-0 focus:border-Lime peer " />
+          <div id="amountIcon"
+           class="duration-500 absolute left-0 top-1/2 -translate-y-1/2 flex justify-center items-center p-3 bg-Slate-100 font-semibold text-gray-600 text-sm peer-focus:bg-Lime">
+          £
+        </div>
+      </div>
+      <p id="amountError" class="hidden text-xs text-Red">This field is required</p>
+        <div class="md:flex md:flex-row gap-2">
+          <div>
+            <label for="term" class="font-semibold text-gray-600 text-xs mt-2">Mortgage Term</label>
+            <div class="relative border-[1px] overflow-hidden border-Slate-100 rounded-[4px] mt-1">
+              <input id="term" type="number" class="font-bold text-black w-full h-full p-1 ps-2 border-[1px] focus:outline-0 focus:border-Lime peer" />
+              <div id="termIcon"
+                class="duration-500 absolute right-0 top-1/2 -translate-y-1/2 flex justify-center items-center p-3 bg-Slate-100 font-semibold text-gray-600 text-sm peer-focus:bg-Lime">
+                years
+              </div>
+            </div>
+            <p id="termError" class="hidden text-xs text-Red mt-1">This field is required</p>
+          </div>
+          <div>
+            <label for="rate" class="font-semibold text-Slate-700 text-xs mt-2">interest Rate</label>
+            <div class="relative border-[1px] overflow-hidden border-Slate-100 rounded-[4px] mt-1">
+              <input id="rate" type="number" class="font-bold text-black w-full h-full p-1 ps-2 border-[1px] focus:outline-0 focus:border-Lime peer" />
+              <div id="rateIcon"
+                class="duration-500 absolute right-0 top-1/2 -translate-y-1/2 flex justify-center items-center p-3 bg-Slate-100 font-semibold text-gray-600 text-sm peer-focus:bg-Lime">
+                %
+              </div>
+            </div>
+            <p id="rateError" class="hidden text-xs text-Red mt-1">This field is required</p>
+          </div>
+        </div>
+
+        <label class="flex flex-col font-semibold text-gray-600 text-xs mt-2">Mortgage Type
+          <label
+            class="mt-2 flex items-center gap-3 p-3 border-[1px] border-Slate-100 rounded-[4px] has-[:checked]:border-Lime has-[:checked]:bg-Lime has-[:checked]:bg-opacity-20">
+            <input id="option1" type="radio" name="radio" class="accent-Lime" />
+            <span class="font-bold text-sm md:text-[14px] ">Repayment</span>
+          </label>
+          <label
+            class="mt-2 flex items-center gap-3 p-3 border-[1px] border-Slate-100 rounded-[4px] has-[:checked]:border-Lime has-[:checked]:bg-Lime has-[:checked]:bg-opacity-20">
+            <input type="radio" name="radio" class="accent-Lime" />
+            <span class="font-bold text-sm md:text-[14px]">Interest Only</span>
+          </label>
+        </label>
+        <p id="radioError" class="hidden text-xs text-Red mt-1">This field is required</p>
+        <button type="submit"
+          class="bg-Lime hover:bg-lime-400 duration-300 text-Slate-900 rounded-full flex items-center justify-center p-2 my-3 gap-2 font-bold md:w-[70%]">
+          <img src="images/icon-calculator.svg" alt="" class="w-[22px]" />
+          Calculate Repayments
+        </button>
+      </form>
+    </div>
+
+    <div id="noResult" class=" flex justify-center items-center flex-col bg-slate-700 p-3 md:ps-5 md:w-1/2 md:rounded-bl-[80px] md:rounded-2xl md:rounded-tl-none">
+      <img src="images/illustration-empty.svg" alt="">
+      <h3 class="text-white font-semibold my-2">Results shown here</h3>
+      <p class="text-center text-xs text-Slate-300">Complete the form and click “calculate repayments” to see what 
+        your monthly repayments would be.</p>
+    </div>
+
+    <div id="result" class="hidden bg-slate-700 p-3 md:ps-5 md:w-1/2 md:rounded-bl-[80px] md:rounded-2xl md:rounded-tl-none">
+      <h2 class="text-White font-semibold text-xl my-3">Your results</h2>
+      <p class="text-Slate-300 font-medium mb-6 md:text-sm">
+        Your results are shown below based on the information you provided. To
+        adjust the results, edit the form and click “calculate repayments”
+        again.
+      </p>
+      <div class="overflow-hidden bg-Slate-900 py-2 px-4 my-3 border-t-4 border-Lime rounded-md">
+        <h3 class="text-Slate-500 my-2 font-medium flex flex-col border-b-2 border-Slate-700">
+          Your monthly repayment
+          <span id="monthly" class="text-4xl text-Lime font-semibold my-3">£1797.74</span>
+        </h3>
+        <h4 class="text-Slate-500 my-2 flex flex-col font-medium">
+          Total you'll repay over the term
+          <span id="total" class="font-semibold text-white text-2xl">£539322.94</span>
+        </h4>
+      </div>
+    </div>
+  </div>
+  <script src="javascript/main.js"></script>
+</body>
+
+</html>
