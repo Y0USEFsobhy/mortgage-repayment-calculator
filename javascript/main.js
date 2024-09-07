@@ -121,3 +121,35 @@ button.addEventListener("click", function (e) {
     total.textContent = `£${totalRepaid.toFixed(2)}`;
   }
 });
+
+// --------------------update-----------------------------------------------
+amount.onclick = function() {
+  if (amountCheck() === false){
+    amountError.classList.add("hidden");
+    amount.style.cssText = "";
+    document.getElementById("amountIcon").style.cssText = "";
+  }
+}
+term.onclick = function() {
+  if (termCheck() === false){
+    termError.classList.add("hidden");
+    term.style.cssText = "";
+    document.getElementById("termIcon").style.cssText = "";
+  }
+}
+rate.onclick = function() {
+  if (rateCheck() === false){
+    rateError.classList.add("hidden");
+    rate.style.cssText = "";
+    document.getElementById("rateIcon").style.cssText = "";
+  }
+}
+
+select.forEach((opt) => {
+  opt.onclick = function(){
+    if (opt.checked){
+      radioError.classList.add("hidden");
+    }
+  }
+});
+
